@@ -15,10 +15,9 @@
         {
             Console.WriteLine("{0} is a Palindrome", num);
         }
-        else
-        {
-            Console.WriteLine("{0} is not a Palindrome", num);
-        }
+        
+        Console.WriteLine("{0} is not a Palindrome", num);
+        
 
     }
 }
