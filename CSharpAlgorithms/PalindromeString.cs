@@ -6,11 +6,11 @@ namespace CSharpAlgorithms
     {
         public static bool IsPalindrome(string s)
         {
-            int len = s.Length;
+            int middleChar = s.Length/2;
             int start = 0;
-            int end = len - 1;
+            int end = s.Length - 1;
 
-            while (start < end)
+            while (start < middleChar)
             {
                 if (s[start] != s[end])
                 {
