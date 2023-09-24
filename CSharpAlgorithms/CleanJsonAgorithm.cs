@@ -10,81 +10,84 @@
 
 
 
-
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
-
-class Program
+namespace CSharpAlgorithms
 {
-    static async Task Main(string[] args)
-    {
-        var httpClient = new HttpClient();
-        var response = await httpClient.GetAsync("https://coderbyte.com/api/challenges/json/json-cleaning");
 
-        var jsonString = await response.Content.ReadAsStringAsync();
-        var jsonObject = JObject.Parse(jsonString);
+    //using System;
+    //using System.Net.Http;
+    //using System.Threading.Tasks;
+    //using Newtonsoft.Json.Linq;
 
-        CleanJsonObject(jsonObject);
+    //class Program
+    //{
+    //    static async Task Main(string[] args)
+    //    {
+    //        var httpClient = new HttpClient();
+    //        var response = await httpClient.GetAsync("https://coderbyte.com/api/challenges/json/json-cleaning");
 
-        Console.WriteLine(jsonObject.ToString());
-    }
+    //        var jsonString = await response.Content.ReadAsStringAsync();
+    //        var jsonObject = JObject.Parse(jsonString);
 
-    static void CleanJsonObject(JObject jsonObject)
-    {
-        foreach (var property in jsonObject.Properties().ToList())
-        {
-            var value = property.Value;
+    //        CleanJsonObject(jsonObject);
 
-            if (value.Type == JTokenType.Object)
-            {
-                CleanJsonObject((JObject)value);
-            }
+    //        Console.WriteLine(jsonObject.ToString());
+    //    }
 
-            if (value.Type == JTokenType.Array)
-            {
-                CleanJsonArray((JArray)value);
-            }
+    //    static void CleanJsonObject(JObject jsonObject)
+    //    {
+    //        foreach (var property in jsonObject.Properties().ToList())
+    //        {
+    //            var value = property.Value;
 
-            if (IsInvalidValue(value))
-            {
-                property.Remove();
-            }
-        }
-    }
+    //            if (value.Type == JTokenType.Object)
+    //            {
+    //                CleanJsonObject((JObject)value);
+    //            }
 
-    static void CleanJsonArray(JArray jsonArray)
-    {
-        for (int i = jsonArray.Count - 1; i >= 0; i--)
-        {
-            var value = jsonArray[i];
+    //            if (value.Type == JTokenType.Array)
+    //            {
+    //                CleanJsonArray((JArray)value);
+    //            }
 
-            if (value.Type == JTokenType.Array)
-            {
-                CleanJsonArray((JArray)value);
-            }
-            if (value.Type == JTokenType.Object)
-            {
-                CleanJsonObject((JObject)value);
-            }
+    //            if (IsInvalidValue(value))
+    //            {
+    //                property.Remove();
+    //            }
+    //        }
+    //    }
 
-            if (IsInvalidValue(value))
-            {
-                jsonArray.RemoveAt(i);
-            }
-        }
-    }
+    //    static void CleanJsonArray(JArray jsonArray)
+    //    {
+    //        for (int i = jsonArray.Count - 1; i >= 0; i--)
+    //        {
+    //            var value = jsonArray[i];
 
-    static bool IsInvalidValue(JToken value)
-    {
-        if (value.Type == JTokenType.String)
-        {
-            var stringValue = value.ToString();
-            return string.IsNullOrEmpty(stringValue) || stringValue == "N/A" || stringValue == "-";
-        }
+    //            if (value.Type == JTokenType.Array)
+    //            {
+    //                CleanJsonArray((JArray)value);
+    //            }
+    //            if (value.Type == JTokenType.Object)
+    //            {
+    //                CleanJsonObject((JObject)value);
+    //            }
 
-        return false;
-    }
+    //            if (IsInvalidValue(value))
+    //            {
+    //                jsonArray.RemoveAt(i);
+    //            }
+    //        }
+    //    }
 
+    //    static bool IsInvalidValue(JToken value)
+    //    {
+    //        if (value.Type == JTokenType.String)
+    //        {
+    //            var stringValue = value.ToString();
+    //            return string.IsNullOrEmpty(stringValue) || stringValue == "N/A" || stringValue == "-";
+    //        }
+
+    //        return false;
+    //    }
+
+    //}
 }

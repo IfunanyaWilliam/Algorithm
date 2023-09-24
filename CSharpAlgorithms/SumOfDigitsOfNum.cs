@@ -16,10 +16,30 @@ public class SumofDigitsOfNum
             newNum.Add(int.Parse(s.ToString()));
         }
 
-        //num.Select(s => newNum.Add(int.Parse(s.ToString()))).ToList();
+        
+        
+
 
         int n = newNum.Sum();
         Console.Write(n);
 
+        //Method 2
+        //num.Select(s => newNum.Add(int.Parse(s.ToString()))).Sum();
+
+
+        
+
     }
+
+    //Method 3
+    //public static int SumOfNumbers(int num)
+    //{
+    //    int sum = 0;
+    //    while (sum > 0)
+    //    {
+    //        sum += num % 10;
+    //        num /= 10;
+    //    }
+    //    return sum;
+    //}
 }

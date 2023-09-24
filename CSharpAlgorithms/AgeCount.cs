@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using System.Text.Json;
 
 namespace CSharpAlgorithms
 {
@@ -26,10 +27,10 @@ namespace CSharpAlgorithms
             var url = "https://coderbyte.com/api/challanges/json/age-counting";
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(url);
+            response.EnsureSuccessStatusCode();     //ensure that the response read the remote file
             var responseString = await response.Content.ReadAsStringAsync();
             var json = JObject.Parse(responseString);
-           await  CleanJsonObject(json);
-
+            await CleanJsonObject(json);
         }
 
         public static async Task<string> CleanJsonObject(JObject json)

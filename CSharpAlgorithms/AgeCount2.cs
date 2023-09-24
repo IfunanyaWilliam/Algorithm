@@ -16,40 +16,40 @@ namespace CSharpAlgorithms
     // => 2
 
 
-    public class AgeCount2
-    {
-        static async Task Main(string[] args)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                string url = "https://coderbyte.com/api/challenges/json/age-counting";
-                var response = await httpClient.GetAsync(url);
-                response.EnsureSuccessStatusCode();
+    //public static class AgeCount2
+    //{
+    //    static async Task Main(string[] args)
+    //    {
+    //        using (var httpClient = new HttpClient())
+    //        {
+    //            string url = "https://coderbyte.com/api/challenges/json/age-counting";
+    //            var response = await httpClient.GetAsync(url);
+    //            response.EnsureSuccessStatusCode();
 
-                string jsonString = await response.Content.ReadAsStringAsync();
-                JObject jsonObject = JObject.Parse(jsonString);
+    //            string jsonString = await response.Content.ReadAsStringAsync();
+    //            JObject jsonObject = JObject.Parse(jsonString);
 
-                Console.WriteLine($"Count of Age not Equal to 1: " + ExtractJsonObject(jsonObject));
-            }
-        }
+    //            Console.WriteLine($"Count of Age not Equal to 1: " + ExtractJsonObject(jsonObject));
+    //        }
+    //    }
 
-        static string ExtractJsonObject(JObject jsonObject)
-        {
-            int count = 0;
-            string data = jsonObject["data"].ToString();
-            foreach (var item in data.Split(','))
-            {
-                string[] inerString = item.Split("=");
+    //    static string ExtractJsonObject(JObject jsonObject)
+    //    {
+    //        int count = 0;
+    //        string data = jsonObject["data"].ToString();
+    //        foreach (var item in data.Split(','))
+    //        {
+    //            string[] inerString = item.Split("=");
 
-                if (inerString[0].Trim() == "age" && inerString[1].Trim() == "1")
-                    data.Remove(data.IndexOf(item), item.Length);
+    //            if (inerString[0].Trim() == "age" && inerString[1].Trim() == "1")
+    //                data.Remove(data.IndexOf(item), item.Length);
 
-                if (inerString[0].Trim() == "age" && inerString[1] != "1")
-                    count++;
-            }
+    //            if (inerString[0].Trim() == "age" && inerString[1] != "1")
+    //                count++;
+    //        }
 
-            return count.ToString();
-        }
+    //        return count.ToString();
+    //    }
 
-    }
+    //}
 }
