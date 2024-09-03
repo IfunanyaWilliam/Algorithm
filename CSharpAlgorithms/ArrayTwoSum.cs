@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace CSharpAlgorithms
 {
@@ -11,6 +14,17 @@ namespace CSharpAlgorithms
     //input 2: { 3, 2, 4 }, target: 6 - answer is [1, 2] since 2 + 4 = 6
 
 
+    //SOLUTION
+    //input 1: { 2, 7, 11, 15 }, target: 9 - answer is [0,1] since 2+7 = 9
+
+    //If I start iterating through a loop, I get to the first element which is 2.
+    //Next, Let's deduct these 2 from the target which is 9: will get 7.
+    //let's add 2 to the dictionary with its index, Now dictionary will have [2, 0]
+    //Going for the second iteration.Next value is 7.
+    //Again did the deduction: 9-7: will get 2.
+    //We will see if the dictionary has an entry of 2. Yes it has.Well these are the 2 indices that makes the sum,
+    //so just return the value from the dictionary(index of 2) and the current value of i(index of 7). Because 2 + 7 = 9.
+
     public static class ArrayTwoSum
     {
         public static int[] TwoSumIndexes(int[] numAarry, int target)
@@ -21,11 +35,11 @@ namespace CSharpAlgorithms
             for(int i = 0;  i < length; i++)
             {
                 int currentNumber = numAarry[i];
-                int secondNumber = target - currentNumber;
+                int firstNumber = target - currentNumber;
 
-                if (indexes.ContainsKey(secondNumber))
+                if (indexes.ContainsKey(firstNumber))
                 {
-                    return new int[] { Array.IndexOf(numAarry, secondNumber), i };
+                    return new int[] { Array.IndexOf(numAarry, firstNumber), i };
                 }
 
                 indexes[currentNumber] = i;
