@@ -34,5 +34,6 @@ using System.Text.Json;
 //Console.WriteLine(st.ToString("H:mm")); //Add .Substring(0,1)  to extract only the hour
 //Console.WriteLine(d.AddHours(-1).ToString());
 
-	   
-		
+int[] nums = { 1, 2, 3, 4, 5, 6 };
+int[] result = ArrayShifter.ShiftRight(nums, 2);
+
