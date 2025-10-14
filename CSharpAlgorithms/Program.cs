@@ -37,3 +37,17 @@ using System.Text.Json;
 int[] nums = { 1, 2, 3, 4, 5, 6 };
 int[] result = ArrayShifter.ShiftRight(nums, 2);
 
+//Console.WriteLine("Enter a number: ");
+//if(int.TryParse(Console.ReadLine(), out int n))
+//{
+//    LowerRightTriangle.Draw(n);
+//}
+//else
+//{
+//    Console.WriteLine("Your input is not a number");
+//}
+
+int answer = BinarySearch.Search(6, nums);
+Console.WriteLine($"Search Result: {answer}");
+
+
