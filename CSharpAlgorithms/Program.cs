@@ -34,8 +34,11 @@ using System.Text.Json;
 //Console.WriteLine(st.ToString("H:mm")); //Add .Substring(0,1)  to extract only the hour
 //Console.WriteLine(d.AddHours(-1).ToString());
 
-int[] nums = { 1, 2, 3, 4, 5, 6 };
-int[] result = ArrayShifter.ShiftRight(nums, 2);
+//int[] nums = { 1, 2, 3, 4, 5, 6 };
+//int[] result = ArrayShifter.ShiftRight(nums, 2);
+
+//int answer = BinarySearch.Search(6, nums);
+//Console.WriteLine($"Search Result: {answer}");
 
 //Console.WriteLine("Enter a number: ");
 //if(int.TryParse(Console.ReadLine(), out int n))
@@ -47,7 +50,11 @@ int[] result = ArrayShifter.ShiftRight(nums, 2);
 //    Console.WriteLine("Your input is not a number");
 //}
 
-int answer = BinarySearch.Search(6, nums);
-Console.WriteLine($"Search Result: {answer}");
+
+//SORTING ALGORITHMS
+
+int[] sortingExample = { 4, 8, 3, 1, 7, 2 };
+int[] result = Sort_Selection.Sort(sortingExample);
+Console.WriteLine("Selection Sort Result " + string.Join(", ", result));
 
 
